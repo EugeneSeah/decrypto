@@ -4,13 +4,13 @@ function loadWordList() {
 	var wordList;
 
 	$.ajax({
-            url : "wordlist.txt",
-            dataType: "text",
-            success : function (data) {
-            	wordList = data.split("\n");
-            },
-            async: false
-        });
+		url: "wordlist.txt",
+		dataType: "text",
+		success: function (data) {
+			wordList = data.split("\n");
+		},
+		async: false
+	});
 	return wordList;
 }
 
@@ -19,21 +19,21 @@ function pickWords(numWords) {
 }
 
 function generateCode() {
-	var code = _.sample([1,2,3,4], 3);
+	var code = _.sample([1, 2, 3, 4], 3);
 	Cookies.set("code", code);
 	setCode(code);
 	$('#codeModal').modal('show');
 }
 
 function setCode(code) {
-	for(idx = 0; idx < 3; idx++) {
+	for (idx = 0; idx < 4; idx++) {
 		$('#code' + idx).text(code[idx]);
 	}
 	$('#revealCodeButton').show();
 }
 
 function setWords(words) {
-	for(idx = 0; idx < 4; idx++) {
+	for (idx = 0; idx < 5; idx++) {
 		$('#word' + idx).text(words[idx]);
 	}
 }
@@ -52,7 +52,7 @@ function loadCode() {
 }
 
 function newGame() {
-	var words = pickWords(4);
+	var words = pickWords(5);
 	Cookies.set("words", words);
 	Cookies.remove("code");
 	$('#revealCodeButton').hide();
@@ -69,13 +69,13 @@ function toggleFullScreen() {
 }
 
 function setFullScreenIcon() {
-    if (screenfull.isFullscreen) {
+	if (screenfull.isFullscreen) {
 		$('#enableFullScreen').hide();
 		$('#disableFullScreen').show();
-    } else {
+	} else {
 		$('#enableFullScreen').show();
 		$('#disableFullScreen').hide();
-    }
+	}
 }
 
 function startNewGame() {
@@ -98,11 +98,11 @@ function initScreenfull() {
 				noSleep.disable();
 			}
 		});
-        setInterval(setFullScreenIcon, 200);
-    } else {
-        $('#fullScreenButton').hide();
-        $('#disableScreenLockModal').modal('show');
-    }
+		setInterval(setFullScreenIcon, 200);
+	} else {
+		$('#fullScreenButton').hide();
+		$('#disableScreenLockModal').modal('show');
+	}
 }
 
 function initialize() {
