@@ -1,4 +1,4 @@
 # Decrypto
 
-https://whoawhoa.github.io/decrypto/
+https://eugeneseah.github.io/decrypto/
 
